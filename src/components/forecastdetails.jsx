@@ -5,18 +5,18 @@ import WeatherIcon from 'react-icons-weather';
 
 const ForecastDetails = props => (
   <div className="forecastdetails">
-    <div><span className="Details-date">{moment(props.forecasts.date).format('ddd Do MMM')}</span></div>
-    <div><span className="humidity">{props.forecasts.humidity}</span></div>
-    <div><span className="Max-temp">{props.forecasts.temperature.max}°c</span></div>
-    <div><span className="Min-temp">{props.forecasts.temperature.min}°c</span></div>
-    <div><span className="Wind-speed">{props.forecasts.wind.speed}</span></div>
-    <div><span className="Wind-direction">{props.forecasts.wind.direction}</span></div>
-    <div><span className="Details-icon"><WeatherIcon name="owm" iconId={props.forecasts.icon} flip="horizontal" rotate="90" /></span></div>
+    <div><span className="Details-date">{moment(props.forecast.date).format('ddd Do MMM')}</span></div>
+    <div><span className="humidity">{props.humidity}</span></div>
+    <div><span className="Max-temp">{props.forecast.temperature.max}°c</span></div>
+    <div><span className="Min-temp">{props.forecast.temperature.min}°c</span></div>
+    <div><span className="Wind-speed">{props.forecast.wind.speed}</span></div>
+    <div><span className="Wind-direction">{props.forecast.wind.direction}</span></div>
+    <div><span className="Details-icon"><WeatherIcon name="owm" iconId={props.forecast.icon} flip="horizontal" rotate="90" /></span></div>
   </div>
 );
 
 ForecastDetails.propTypes = {
-  forecasts: PropTypes.shape({
+  forecast: PropTypes.shape({
     date: PropTypes.number,
     temperature: PropTypes.shape({
       max: PropTypes.number,
