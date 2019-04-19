@@ -5,10 +5,10 @@ import moment from 'moment';
 
 const ForecastSummary = props => (
   <div>
-    <span className="date">{moment(props.date).format('ddd Do MMM')}</span>
-    <span className="temperature">{props.temperature}</span>
-    <span className="description">{props.description}</span>
-    <span className="icon"><WeatherIcon name="owm" iconId={props.icon} flip="horizontal" rotate="90" /></span>
+    <div><span className="date">{moment(props.date).format('ddd Do MMM')}</span></div>
+    <div><span className="temperature">{props.temperature}°c</span></div>
+    <div><span className="description">{props.description}</span></div>
+    <div><span className="icon"><WeatherIcon name="owm" iconId={props.icon} flip="horizontal" rotate="90" /></span></div>
   </div>
 );
 
