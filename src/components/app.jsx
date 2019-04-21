@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import LocationDetails from './location-details';
 import ForecastSummaries from './forecast-summaries';
 import ForecastDetails from './forecastdetails';
+import SearchForm from './searchform';
 import '../styles/app.scss';
 import '../styles/forecast-summaries.scss';
 import axios from 'axios';
@@ -52,6 +53,7 @@ class App extends React.Component {
           city={this.state.location.city}
           country={this.state.location.country}
         />
+        <SearchForm />
         <ForecastSummaries forecasts={this.state.forecasts} onForecastSelect={this.handleForecastSelect} />
         { selectedForecast && <ForecastDetails forecast={selectedForecast} /> }
       </div>
