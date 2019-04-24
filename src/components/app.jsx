@@ -7,7 +7,7 @@ import SearchForm from './searchform';
 import '../styles/app.scss';
 import '../styles/forecast-summaries.scss';
 import axios from 'axios';
-const url = 'https://mcr-codes-weather.herokuapp.com/forecast?city=manchester';
+const url = 'https://mcr-codes-weather.herokuapp.com/forecast?city=';
 
 
 class App extends React.Component {
@@ -22,6 +22,7 @@ class App extends React.Component {
       },
     };
     this.handleForecastSelect = this.handleForecastSelect.bind(this);
+    this.updateCity = this.updateCity.bind(this);
   }
 
   handleForecastSelect(date) {
@@ -29,6 +30,22 @@ class App extends React.Component {
       selectedDate: date,
     });
   }
+
+  updateCity(city) {
+    axios.get(`${url}${city}`)
+      .then((response) => {
+        this.setState({
+          forecasts: response.data.forecasts,
+          location: response.data.location,
+        });
+      })
+      .catch(error => {
+        if (error.response) {
+          console.log('city not available');
+        }
+      });
+  };
+
 
   componentDidMount() {
     axios.get(`${url}`)
@@ -53,7 +70,7 @@ class App extends React.Component {
           city={this.state.location.city}
           country={this.state.location.country}
         />
-        <SearchForm />
+        <SearchForm updateCity={this.updateCity} />
         <ForecastSummaries forecasts={this.state.forecasts} onForecastSelect={this.handleForecastSelect} />
         { selectedForecast && <ForecastDetails forecast={selectedForecast} /> }
       </div>

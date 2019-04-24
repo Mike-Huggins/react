@@ -7,23 +7,27 @@ class SearchForm extends React.Component {
       searchText: '',
     };
     this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleOnChange(event) {
     this.setState({
       searchText: event.target.value,
     });
-    return console.log(this.state.searchText);
   }
+
+  handleSubmit() {
+    this.props.updateCity(this.state.searchText);
+  };
 
   render() {
     return (
       <div>
         <input onChange={this.handleOnChange} type="text" value={this.state.searchText} />
-        <button type="submit"> Search </button>
+        <button onClick={this.handleSubmit} type="submit"> Search </button>
       </div>
     );
   }
-}
+};
 
 export default SearchForm;
